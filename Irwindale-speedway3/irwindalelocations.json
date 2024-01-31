@@ -1,0 +1,55 @@
+[
+    {
+        "name": "Entrance",
+        "lat": -117.98556,
+        "lon": 34.11049,
+        "imageName": "flag.checkered",
+        "description": "Entrance to the speedway"
+        
+    },
+    {
+        "name": "Ticket Office",
+        "lat": -117.98608,
+        "lon": 34.10891,
+        "imageName": "ticket.fill",
+        "description": "Ticket Sales"
+    },
+    {
+        "name": "Iwindale Dragstrip",
+        "lat" : -117.98324,
+        "lon" : 34.10697,
+        "imageName" : "road.lanes",
+        "description": "Los Angeles's premier drag strip"
+    },
+    {
+        "name": "Irwindale Speedway",
+        "lat" : -117.98781,
+        "lon" : 34.11015,
+        "imageName": "road.lanes.curved.left",
+        "description" : "Fastest short track on the west."
+    },
+    {
+        "name" : "Consessions",
+        "lat": -117.98712,
+        "lon" : 34.11022,
+        "imageName": "fork.knife.circle.fill",
+        "description": "Food"
+    },
+    {
+        "name" : "Pit Area",
+        "lat" : -117.98761,
+        "lon" : 34.11075,
+        "imageName" : "car.2",
+        "description": "Car pit area (need pit pass to enter)"
+
+
+    },
+    {
+        "name" : "Parking Lot",
+        "lat" : -117.98385,
+        "lon" : 34.10880,
+        "imageName": "parkingsign.circle",
+        "description": "parking"
+    }
+
+]

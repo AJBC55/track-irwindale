@@ -11,7 +11,7 @@ import SwiftUI
 struct Irwindale_speedway3App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Main_View()
         }
     }
 }
