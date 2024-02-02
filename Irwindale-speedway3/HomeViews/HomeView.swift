@@ -17,29 +17,21 @@ struct HomeView: View {
     
     
     var body: some View {
-        
-        VStack(alignment: .leading){
+        GeometryReader{ proxy in
+        VStack(alignment: .leading, spacing: 0){
             // Text("Irwindale Speedway")
             // .font(.largeTitle)
             //  .bold()
+            //Image("cisl")
+                //.resizable()
+                //.aspectRatio(contentMode: .fit)
+            //Divider()
+               
             
             
                
-                GeometryReader{ proxy in
-                    ScrollView{
-                        
-                        
-                       
-                        SmallMapView()
-                            .frame(height: proxy.size.height/3)
-                            .padding(.horizontal)
-                            .onTapGesture {
-                               mapSheetVisible = true
-                            }
-                        
-                        
-                        
-                    }
+                
+            MapView(mapsheetVisible: Binding.constant(true))
                 }
                 }
                 .onAppear{

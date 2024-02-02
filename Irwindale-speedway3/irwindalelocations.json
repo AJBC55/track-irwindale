@@ -30,15 +30,15 @@
     },
     {
         "name" : "Consessions",
-        "lat": -117.98712,
-        "lon" : 34.11022,
+        "lat": -117.98758,
+        "lon" : 34.11078,
         "imageName": "fork.knife.circle.fill",
         "description": "Food"
     },
     {
         "name" : "Pit Area",
-        "lat" : -117.98761,
-        "lon" : 34.11075,
+        "lat" : -117.98809,
+        "lon" : 34.11130,
         "imageName" : "car.2",
         "description": "Car pit area (need pit pass to enter)"
 
@@ -50,6 +50,13 @@
         "lon" : 34.10880,
         "imageName": "parkingsign.circle",
         "description": "parking"
+    },
+    {
+        "name" : "Burnout Box",
+        "lat" :  -117.98548,
+        "lon" : 34.10894,
+        "imageName" : "car.rear.and.tire.marks",
+        "description" : "Burnout box"
     }
 
 ]

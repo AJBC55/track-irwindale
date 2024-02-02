@@ -12,41 +12,40 @@ struct MapView: View {
     var dataservice = DataService()
     @State var locations = [IrwindaleLocation]()
     @Binding var mapsheetVisible : Bool
-   
-    
-    
+    @State var loc : UUID?
+    @State var item : IrwindaleLocation?
+    @State var cam : MapCameraPosition = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 34.10917, longitude: -117.98557), distance: 1000, heading: 294 , pitch: 40))
+
     var body: some View {
         ZStack(alignment: .topLeading){
-        
-        Map(){
-            ForEach(locations) { location in
-                Marker(location.name, systemImage: location.imageName, coordinate: CLLocationCoordinate2D(latitude: location.lon, longitude: location.lat))
-            }
+            Map(position: $cam, selection: $loc){
+                ForEach(locations) { location in
+                    Marker(location.name, systemImage: location.imageName, coordinate: CLLocationCoordinate2D(latitude: location.lon, longitude: location.lat))
+                        .tag(location.id)
+                     
+
+                }
             
-        }
-        .mapStyle(.hybrid(elevation: .realistic ))
-        .cornerRadius(15)
-        .ignoresSafeArea()
-        
-            Button{
-                mapsheetVisible = false
-            }label: {
-                Image(systemName: "x.circle.fill")
-                    .imageScale(.large)
-                    .foregroundStyle(.white)
+            }
+            .onChange(of: loc){oldValue, newValue in
+                item = locations.first{ item in
+                    item.id == loc
+                    
+                }
                 
             }
-            .padding(.leading,10)
-            .padding(.top, 10)
+            .mapStyle(.imagery(elevation: .realistic))
+        .cornerRadius(15)
+        .ignoresSafeArea()
+           
+            
             
     }
-        
         .onAppear{
             locations = dataservice.getLocationData()
         }
     }
 }
-
 #Preview {
     MapView(mapsheetVisible: Binding.constant(true))
 }
