@@ -14,7 +14,7 @@ struct MapView: View {
     @Binding var mapsheetVisible : Bool
     @State var loc : UUID?
     @State var item : IrwindaleLocation?
-    @State var cam : MapCameraPosition = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 34.10917, longitude: -117.98557), distance: 1000, heading: 294 , pitch: 40))
+    @State var cam : MapCameraPosition = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 34.10917, longitude: -117.98557), distance: 1700, heading: 294 , pitch: 40))
 
     var body: some View {
         ZStack(alignment: .topLeading){
@@ -32,14 +32,21 @@ struct MapView: View {
                     item.id == loc
                     
                 }
-                
+                cam = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: item?.lon ?? 34.10917 , longitude: item?.lat ?? -117.98557), distance: 300,heading : 294, pitch: 45))
             }
             .mapStyle(.imagery(elevation: .realistic))
         .cornerRadius(15)
         .ignoresSafeArea()
            
             
-            
+            Button{
+               cam = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 34.10917, longitude: -117.98557), distance: 1700, heading: 294 , pitch: 40))
+            }label: {
+                Image(systemName: "arrowshape.turn.up.backward.fill")
+                    .imageScale(.large)
+                    .foregroundColor(.black.opacity(0.7))
+                    
+            }
     }
         .onAppear{
             locations = dataservice.getLocationData()
