@@ -16,6 +16,23 @@ struct EventsView: View {
                 ForEach(events) { event in
                     VStack(alignment: .leading){
                         Spacer()
+                        if let ImageUrl = event.eventImg{
+                            // display image
+                            AsyncImage(url: URL(string: ImageUrl)!){ image in
+                            image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .cornerRadius(15)
+                                    
+                                
+                            } placeholder:{
+                                Rectangle()
+                                    .foregroundStyle(.gray)
+                                    .aspectRatio(contentMode: .fill)
+                                    .cornerRadius(15)
+                                
+                            }
+                        }
                         Text(Helper.eventnameformat(eventName: event.eventName ?? ""))
                             .font(.title2)
                             .bold()
