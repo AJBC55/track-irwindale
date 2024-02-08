@@ -34,4 +34,25 @@ struct DataService{
         
         
     }
-}
+    func geteventData()-> [Event]{
+        if let eventUrl = Bundle.main.url(forResource: "events", withExtension: "json"){
+            do{
+                let decoder = JSONDecoder()
+                let data2 = try Data(contentsOf: eventUrl)
+                do{
+                    let result = try decoder.decode([Event].self, from: data2)
+                    return result
+                }
+                catch{
+                    print(error)
+                }
+            }
+                catch{
+                    print(error)
+                }
+            }
+        return [Event]()
+        }
+        
+    }
+

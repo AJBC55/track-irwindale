@@ -8,9 +8,51 @@
 import SwiftUI
 
 struct EventsView: View {
+    var dataService = DataService()
+   @State var events = [Event]()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView{
+       
+                ForEach(events) { event in
+                    VStack(alignment: .leading){
+                        Spacer()
+                        Text(Helper.eventnameformat(eventName: event.eventName ?? ""))
+                            .font(.title2)
+                            .bold()
+                        Text(event.eventDate ?? "")
+                            .font(.headline)
+                        Text(event.eventTime?[0] ?? "")
+                            .font(.headline)
+                        Text(event.eventDescription ?? "")
+                            .font(.subheadline)
+                        if event.eventticketLink ?? "" != ""{
+                            
+                            Button{
+                                if let url = URL(string: event.eventticketLink!){
+                                    UIApplication.shared.open(url)
+                                }
+                            }label: {
+                                Text("Get Tickets")
+                                    .foregroundStyle(.white)
+                                    .bold()
+                                    .padding(.horizontal)
+                                    .padding(.vertical,5)
+                                    .background(Color(.blue))
+                                    .cornerRadius(15)
+                                
+                            }
+                        }
+                        Divider()
+                    }
+                    .padding(.horizontal)
+                
+            }
+        }
+        .onAppear{
+            events = dataService.geteventData()
+        }
     }
+        
 }
 
 #Preview {

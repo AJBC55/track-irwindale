@@ -19,6 +19,8 @@
 		650DF6E82B6AB61F00C4130B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DF6E72B6AB61F00C4130B /* MapView.swift */; };
 		650DF6EB2B6AD21E00C4130B /* SmallMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DF6EA2B6AD21E00C4130B /* SmallMapView.swift */; };
 		650DF6EE2B6B391200C4130B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DF6ED2B6B391200C4130B /* Event.swift */; };
+		650DF6F02B7470A200C4130B /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 650DF6EF2B7470A200C4130B /* events.json */; };
+		650DF6F22B7477A400C4130B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DF6F12B7477A400C4130B /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		650DF6E72B6AB61F00C4130B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		650DF6EA2B6AD21E00C4130B /* SmallMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallMapView.swift; sourceTree = "<group>"; };
 		650DF6ED2B6B391200C4130B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		650DF6EF2B7470A200C4130B /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
+		650DF6F12B7477A400C4130B /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 		650DF6C12B69A44800C4130B = {
 			isa = PBXGroup;
 			children = (
+				650DF6F12B7477A400C4130B /* Helper.swift */,
 				650DF6CC2B69A44800C4130B /* Irwindale-speedway3 */,
 				650DF6CB2B69A44800C4130B /* Products */,
 			);
@@ -75,6 +80,7 @@
 				650DF6E92B6AB78200C4130B /* HomeViews */,
 				650DF6EC2B6B38AD00C4130B /* New Group */,
 				650DF6E32B69B2FA00C4130B /* irwindalelocations.json */,
+				650DF6EF2B7470A200C4130B /* events.json */,
 				650DF6D12B69A44900C4130B /* Assets.xcassets */,
 				650DF6D32B69A44900C4130B /* Preview Content */,
 			);
@@ -165,6 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				650DF6F02B7470A200C4130B /* events.json in Resources */,
 				650DF6D52B69A44900C4130B /* Preview Assets.xcassets in Resources */,
 				650DF6D22B69A44900C4130B /* Assets.xcassets in Resources */,
 				650DF6E42B69B2FA00C4130B /* irwindalelocations.json in Resources */,
@@ -185,6 +192,7 @@
 				650DF6DE2B69A59800C4130B /* HomeView.swift in Sources */,
 				650DF6E62B69B31000C4130B /* DataService.swift in Sources */,
 				650DF6CE2B69A44800C4130B /* Irwindale_speedway3App.swift in Sources */,
+				650DF6F22B7477A400C4130B /* Helper.swift in Sources */,
 				650DF6DC2B69A4D600C4130B /* EventsView.swift in Sources */,
 				650DF6EB2B6AD21E00C4130B /* SmallMapView.swift in Sources */,
 			);
