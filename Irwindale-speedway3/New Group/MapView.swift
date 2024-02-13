@@ -48,8 +48,8 @@ struct MapView: View {
                     
             }
     }
-        .onAppear{
-            locations = dataservice.getLocationData()
+        .task{
+            locations = await dataservice.getlocapiData()
         }
     }
 }
