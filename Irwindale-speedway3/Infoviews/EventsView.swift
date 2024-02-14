@@ -42,7 +42,10 @@ struct EventsView: View {
                             .font(.headline)
                         Text(event.eventDescription ?? "")
                             .font(.subheadline)
+                        HStack{
                         if event.eventticketLink ?? "" != ""{
+                            HStack{
+                                Spacer()
                             
                             Button{
                                 if let url = URL(string: event.eventticketLink!){
@@ -52,21 +55,28 @@ struct EventsView: View {
                                 Text("Get Tickets")
                                     .foregroundStyle(.white)
                                     .bold()
-                                    .padding(.horizontal)
-                                    .padding(.vertical,5)
+                                    .padding(.horizontal,120)
+                                    .padding(.vertical,6)
                                     .background(Color(.blue))
-                                    .cornerRadius(15)
-                                
+                            }       .cornerRadius(15)
+                                Spacer()
                             }
+                           
+                            }
+                             
+                           
+                        
                         }
                         Divider()
                     }
                     .padding(.horizontal)
+                    
                 
             }
+                .padding(.vertical)
         }
-        .onAppear{
-            events = dataService.geteventData()
+        .task{
+            await events = dataService.geteventapiData()
         }
     }
         

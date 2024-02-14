@@ -11,7 +11,6 @@ import MapKit
 struct MapView: View {
     var dataservice = DataService()
     @State var locations = [IrwindaleLocation]()
-    @Binding var mapsheetVisible : Bool
     @State var loc : UUID?
     @State var item : IrwindaleLocation?
     @State var cam : MapCameraPosition = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 34.10917, longitude: -117.98557), distance: 1700, heading: 294 , pitch: 40))
@@ -54,5 +53,5 @@ struct MapView: View {
     }
 }
 #Preview {
-    MapView(mapsheetVisible: Binding.constant(true))
+    MapView()
 }

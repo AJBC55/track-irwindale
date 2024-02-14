@@ -10,19 +10,9 @@ import SwiftUI
 struct Main_View: View {
     var body: some View {
         TabView{
-            EventsView().tabItem {
-                VStack{
-                    Image(systemName: "list.bullet")
-                    Text("Events")
-                }
-            }
-                HomeView().tabItem {
-                    VStack{
-                        Image(systemName: "house")
-                        Text("Home")
-                    }
-                        
-                    }
+           
+            
+                HomeView()
                 
             }
         

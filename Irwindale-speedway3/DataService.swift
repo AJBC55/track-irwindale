@@ -34,25 +34,59 @@ struct DataService{
         
         
     }
-    func geteventData()-> [Event]{
-        if let eventUrl = Bundle.main.url(forResource: "events", withExtension: "json"){
+     func geteventapiData() async -> [Event]{
+         if let url = URL(string: "http://127.0.0.1:8000/events"){
+             let request = URLRequest(url: url)
+             do{
+                 let (data, _) = try await URLSession.shared.data(for: request)
+                 let decoder  = JSONDecoder()
+                 
+                 let result = try decoder.decode( [Event].self, from: data )
+                 return result
+                 
+             }
+             catch{
+                 print(error)
+             }
+         }
+         return [Event]()
+    }
+    
+    func getnewsData() async -> [News]{
+        if let url = URL(string: "http://127.0.0.1:8000/news"){
+            let request = URLRequest(url: url)
+            
             do{
+                let (data , response) = try await URLSession.shared.data(for: request)
                 let decoder = JSONDecoder()
-                let data2 = try Data(contentsOf: eventUrl)
-                do{
-                    let result = try decoder.decode([Event].self, from: data2)
-                    return result
-                }
-                catch{
-                    print(error)
-                }
+                
+                let result = try decoder.decode( [News].self , from: data)
+                return result
             }
-                catch{
-                    print(error)
-                }
+            catch{
+                print(error)
             }
-        return [Event]()
         }
+        return [News]()
+    }
+    
+    func getlocapiData() async -> [IrwindaleLocation]{
+        if let url = URL(string: "http://127.0.0.1:8000/locations"){
+            let request = URLRequest(url: url)
+            do{
+                let (data, response) = try await URLSession.shared.data(for: request)
+                let decoder = JSONDecoder()
+                
+                let result = try decoder.decode([IrwindaleLocation].self, from: data)
+                return result
+            }
+            catch{
+                print(error)
+                
+            }
+        }
+        return [IrwindaleLocation]()
+    }
         
     }
 
