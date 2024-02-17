@@ -23,24 +23,59 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
+            Image("cisl")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.horizontal)
             Button{
                 selectedSheet = .events
             }label: {
-                Text("Events")
+                ZStack{
+                    Image("car")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(25)
+                    
+                    Text("Events")
+                        .foregroundStyle(.black)
+                        .font(.largeTitle)
+                        .bold()
+                }
+                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             }
             .padding()
             
             Button {
                 selectedSheet = .map
             }label: {
-                Text("Map")
+                ZStack{
+                    Image("map")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(25)
+                    Text("Map")
+                        .foregroundStyle(.black)
+                        .font(.largeTitle)
+                        .bold()
+                }
+                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             }
             .padding()
             
             Button{
                 selectedSheet = .news
             }label: {
-                Text("News")
+                ZStack{
+                    Image("flag")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(25)
+                    
+                    Text("News")
+                        .font(.largeTitle)
+                        .foregroundStyle(.black)
+                        .bold()
+                }
             }
             .padding()
         }

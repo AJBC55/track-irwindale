@@ -12,8 +12,19 @@ struct Main_View: View {
         TabView{
            
             
-                HomeView()
-                
+            EventsView().tabItem {
+                VStack{
+                    Image(systemName: "list.bullet")
+                    Text("Events")
+                }
+            }
+            
+            MapView().tabItem {
+                VStack{
+                    Image(systemName: "map")
+                    Text("Map")
+                }
+            }
             }
         
         .tabViewStyle(DefaultTabViewStyle())
