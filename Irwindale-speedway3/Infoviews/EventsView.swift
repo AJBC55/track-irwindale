@@ -76,7 +76,7 @@ struct EventsView: View {
                 .padding(.vertical)
         }
         .task{
-            await events = dataService.geteventapiData()
+            events = dataService.geteventData()
         }
     }
         

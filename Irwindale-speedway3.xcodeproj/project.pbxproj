@@ -21,6 +21,7 @@
 		650DF6F22B7477A400C4130B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DF6F12B7477A400C4130B /* Helper.swift */; };
 		65D3DC712B7C2411004CE75D /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D3DC702B7C2411004CE75D /* News.swift */; };
 		65D3DC732B7C2514004CE75D /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D3DC722B7C2514004CE75D /* NewsView.swift */; };
+		65D3DC762B813DC3004CE75D /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 65D3DC752B813DC3004CE75D /* events.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		650DF6F12B7477A400C4130B /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		65D3DC702B7C2411004CE75D /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		65D3DC722B7C2514004CE75D /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		65D3DC752B813DC3004CE75D /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				650DF6DB2B69A4D600C4130B /* EventsView.swift */,
 				65D3DC722B7C2514004CE75D /* NewsView.swift */,
 				650DF6E72B6AB61F00C4130B /* MapView.swift */,
+				65D3DC752B813DC3004CE75D /* events.json */,
 			);
 			path = Infoviews;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D3DC762B813DC3004CE75D /* events.json in Resources */,
 				650DF6D52B69A44900C4130B /* Preview Assets.xcassets in Resources */,
 				650DF6D22B69A44900C4130B /* Assets.xcassets in Resources */,
 				650DF6E42B69B2FA00C4130B /* irwindalelocations.json in Resources */,
@@ -337,6 +341,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,6 +373,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

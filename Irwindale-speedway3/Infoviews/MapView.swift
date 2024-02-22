@@ -48,7 +48,7 @@ struct MapView: View {
             }
     }
         .task{
-            locations = await dataservice.getlocapiData()
+            locations =  dataservice.getLocationData()
         }
     }
 }
