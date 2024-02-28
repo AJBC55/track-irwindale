@@ -2,7 +2,7 @@
 //  MapView.swift
 //  Irwindale-speedway3
 //
-//  Created by Andrew Chapman on 1/31/24.
+//  Created by Siddhu Sarvepally on 2/27/24.
 //
 
 import SwiftUI
@@ -10,48 +10,147 @@ import MapKit
 
 struct MapView: View {
     var dataservice = DataService()
+    @State private var viewMode = MapViewModel()
     @State var locations = [IrwindaleLocation]()
-    @State var loc : UUID?
+    @State var loc = UUID()
     @State var item : IrwindaleLocation?
-    @State var cam : MapCameraPosition = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 34.10917, longitude: -117.98557), distance: 1700, heading: 294 , pitch: 40))
-
+    @State var cam = MKMapCamera(lookingAtCenter: CLLocationCoordinate2D(latitude: 34.10917, longitude: -117.98557), fromDistance: 1700, pitch: 40, heading: 294)
+    let showsUserLocation = true
+    
     var body: some View {
-        ZStack(alignment: .topLeading){
-            Map(position: $cam, selection: $loc){
-                ForEach(locations) { location in
-                    Marker(location.name, systemImage: location.imageName, coordinate: CLLocationCoordinate2D(latitude: location.lon, longitude: location.lat))
-                        .tag(location.id)
-                     
-
+        ZStack(alignment: .topLeading) {
+            CustomMapView(configuration: CustomMapConfiguration(uuid: loc, cameraPosition: cam, showsUserLocation: showsUserLocation, annotations: locations))
+                .edgesIgnoringSafeArea(.top)
+                .onAppear {
+                    viewMode.checkIfLocationEnabled()
                 }
             
-            }
-            .onChange(of: loc){oldValue, newValue in
-                item = locations.first{ item in
-                    item.id == loc
-                    
-                }
-                cam = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: item?.lon ?? 34.10917 , longitude: item?.lat ?? -117.98557), distance: 300,heading : 294, pitch: 45))
-            }
-            .mapStyle(.imagery(elevation: .realistic))
-        .cornerRadius(15)
-        .ignoresSafeArea()
-           
             
-            Button{
-               cam = .camera(MapCamera(centerCoordinate: CLLocationCoordinate2D(latitude: 34.10917, longitude: -117.98557), distance: 1700, heading: 294 , pitch: 40))
-            }label: {
+            Button {
+               cam = MKMapCamera(lookingAtCenter: CLLocationCoordinate2D(latitude: 34.10917, longitude: -117.98557), fromDistance: 1700, pitch: 40, heading: 294)
+            } label: {
                 Image(systemName: "arrowshape.turn.up.backward.fill")
                     .imageScale(.large)
-                    .foregroundColor(.black.opacity(0.7))
+                    .foregroundColor(.black.opacity(1.5))
                     
             }
-    }
-        .task{
+            .cornerRadius(15)
+            .padding(.leading, 20.0)
+        }
+        .task {
             locations =  dataservice.getLocationData()
+        }
+        
+    }
+}
+
+#Preview {
+    MapView()
+}
+
+struct CustomMapConfiguration {
+    let uuid: UUID
+    let cameraPosition: MKMapCamera
+    let showsUserLocation: Bool
+    let annotations: [IrwindaleLocation]
+}
+
+struct CustomMapView: UIViewRepresentable {
+    var configuration: CustomMapConfiguration
+    
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView(frame: .zero)
+        mapView.delegate = context.coordinator
+        return mapView
+    }
+    
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+        uiView.camera = configuration.cameraPosition
+        uiView.showsUserLocation = configuration.showsUserLocation
+        
+        uiView.mapType = .satelliteFlyover
+        
+        uiView.removeAnnotations(uiView.annotations)
+        for annotation in configuration.annotations {
+            let annot = MKPointAnnotation()
+            annot.coordinate = CLLocationCoordinate2D(latitude: annotation.lon, longitude: annotation.lat)
+            annot.title = annotation.name
+            uiView.addAnnotation(annot)
+        }
+    }
+    
+    func makeCoordinator() -> Coordinator {
+            Coordinator(self)
+        }
+        
+        // Coordinator class to handle delegate methods
+    class Coordinator: NSObject, MKMapViewDelegate {
+        var parent: CustomMapView
+            
+        init(_ parent: CustomMapView) {
+            self.parent = parent
+        }
+            
+
+        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            if let annotation = view.annotation {
+                let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                let camera = MKMapCamera(lookingAtCenter: annotation.coordinate, fromDistance: 300, pitch: 45, heading: 294)
+                mapView.setRegion(region, animated: true)
+                mapView.setCamera(camera, animated: true)
+            }
+        }
+        
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            guard !(annotation is MKUserLocation) else { return nil } // Return nil for user's location annotation
+            
+            let identifier = "CustomAnnotationView"
+            
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            if annotationView == nil {
+                annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView!.canShowCallout = true // Enable callout
+                let button = UIButton(type: .detailDisclosure)
+                annotationView!.rightCalloutAccessoryView = button // Add accessory button to callout
+            } else {
+                annotationView!.annotation = annotation
+            }
+            
+            return annotationView
         }
     }
 }
-#Preview {
-    MapView()
+
+final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+    var locationManager: CLLocationManager?
+    
+    func checkIfLocationEnabled() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager = CLLocationManager()
+            locationManager!.delegate = self
+            checkLocationAuth()
+        }
+    }
+    
+    private func checkLocationAuth() {
+        guard let locationManager = locationManager else { return }
+        
+        switch locationManager.authorizationStatus {
+            
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            print("Your location is restricted.")
+        case .denied:
+            print("You have denied access to your location.")
+        case .authorizedAlways, .authorizedWhenInUse:
+            break
+        @unknown default:
+            break
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkLocationAuth()
+    }
 }
