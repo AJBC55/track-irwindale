@@ -37,7 +37,7 @@ struct MapView: View {
             .cornerRadius(15)
             .padding(.leading, 20.0)
         }
-        .task {
+        .onAppear{
             locations =  dataservice.getLocationData()
         }
         
