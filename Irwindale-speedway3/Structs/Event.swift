@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+    // this needs to be modified to work with the api
 
 struct Event: Identifiable, Decodable{
     let id: UUID = UUID()

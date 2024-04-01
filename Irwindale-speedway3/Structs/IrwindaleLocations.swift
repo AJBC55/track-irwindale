@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+// this is fine
 struct IrwindaleLocation: Identifiable, Decodable{
     let id: UUID = UUID()
     var name: String

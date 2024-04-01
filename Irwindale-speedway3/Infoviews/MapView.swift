@@ -7,7 +7,7 @@
 
 import SwiftUI
 import MapKit
-
+// There is way too much code on this page it needs to be moved to a another file
 struct MapView: View {
     var dataservice = DataService()
     @State private var viewMode = MapViewModel()
@@ -123,7 +123,7 @@ struct CustomMapView: UIViewRepresentable {
 
 final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
-    
+    // This needs to be fixed it move it to another thread.
     func checkIfLocationEnabled() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()

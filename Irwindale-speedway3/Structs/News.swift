@@ -8,7 +8,7 @@
 import Foundation
 
 
-
+// this needs to be modifed to work with the api
 struct News: Identifiable, Decodable{
     let id: UUID = UUID()
     var newsDescription: String?

@@ -19,6 +19,9 @@
 		650DF6E82B6AB61F00C4130B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DF6E72B6AB61F00C4130B /* MapView.swift */; };
 		650DF6EE2B6B391200C4130B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DF6ED2B6B391200C4130B /* Event.swift */; };
 		650DF6F22B7477A400C4130B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650DF6F12B7477A400C4130B /* Helper.swift */; };
+		65206A762BBA4923005F2FA3 /* todo.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 65206A752BBA4923005F2FA3 /* todo.rtf */; };
+		65206A7A2BBA49BF005F2FA3 /* login .swift in Sources */ = {isa = PBXBuildFile; fileRef = 65206A792BBA49BF005F2FA3 /* login .swift */; };
+		65206A7C2BBB5A87005F2FA3 /* createAcount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65206A7B2BBB5A87005F2FA3 /* createAcount.swift */; };
 		65D3DC712B7C2411004CE75D /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D3DC702B7C2411004CE75D /* News.swift */; };
 		65D3DC732B7C2514004CE75D /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D3DC722B7C2514004CE75D /* NewsView.swift */; };
 		65D3DC762B813DC3004CE75D /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 65D3DC752B813DC3004CE75D /* events.json */; };
@@ -38,6 +41,9 @@
 		650DF6E72B6AB61F00C4130B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		650DF6ED2B6B391200C4130B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		650DF6F12B7477A400C4130B /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		65206A752BBA4923005F2FA3 /* todo.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = todo.rtf; sourceTree = "<group>"; };
+		65206A792BBA49BF005F2FA3 /* login .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "login .swift"; sourceTree = "<group>"; };
+		65206A7B2BBB5A87005F2FA3 /* createAcount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createAcount.swift; sourceTree = "<group>"; };
 		65D3DC702B7C2411004CE75D /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		65D3DC722B7C2514004CE75D /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		65D3DC752B813DC3004CE75D /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
@@ -73,7 +79,9 @@
 		650DF6CC2B69A44800C4130B /* Irwindale-speedway3 */ = {
 			isa = PBXGroup;
 			children = (
+				65206A782BBA499F005F2FA3 /* auth */,
 				650DF6CD2B69A44800C4130B /* Irwindale_speedway3App.swift */,
+				65206A752BBA4923005F2FA3 /* todo.rtf */,
 				650DF6F12B7477A400C4130B /* Helper.swift */,
 				650DF6CF2B69A44800C4130B /* Main_View.swift */,
 				650DF6E52B69B31000C4130B /* DataService.swift */,
@@ -104,6 +112,15 @@
 				65D3DC752B813DC3004CE75D /* events.json */,
 			);
 			path = Infoviews;
+			sourceTree = "<group>";
+		};
+		65206A782BBA499F005F2FA3 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				65206A792BBA49BF005F2FA3 /* login .swift */,
+				65206A7B2BBB5A87005F2FA3 /* createAcount.swift */,
+			);
+			path = auth;
 			sourceTree = "<group>";
 		};
 		65D3DC742B7C2DD0004CE75D /* Structs */ = {
@@ -178,6 +195,7 @@
 				650DF6D52B69A44900C4130B /* Preview Assets.xcassets in Resources */,
 				650DF6D22B69A44900C4130B /* Assets.xcassets in Resources */,
 				650DF6E42B69B2FA00C4130B /* irwindalelocations.json in Resources */,
+				65206A762BBA4923005F2FA3 /* todo.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,8 +208,10 @@
 			files = (
 				650DF6E82B6AB61F00C4130B /* MapView.swift in Sources */,
 				650DF6EE2B6B391200C4130B /* Event.swift in Sources */,
+				65206A7C2BBB5A87005F2FA3 /* createAcount.swift in Sources */,
 				650DF6D02B69A44800C4130B /* Main_View.swift in Sources */,
 				650DF6E22B69AB7300C4130B /* IrwindaleLocations.swift in Sources */,
+				65206A7A2BBA49BF005F2FA3 /* login .swift in Sources */,
 				650DF6DE2B69A59800C4130B /* HomeView.swift in Sources */,
 				650DF6E62B69B31000C4130B /* DataService.swift in Sources */,
 				65D3DC712B7C2411004CE75D /* News.swift in Sources */,

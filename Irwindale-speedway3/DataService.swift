@@ -7,7 +7,8 @@
 
 import Foundation
 
-
+// update the data servie for the new api
+// this page is for date retrival only and saving events, auth will be handaled in another file. 
 struct DataService{
     
     func getLocationData() -> [IrwindaleLocation]{
