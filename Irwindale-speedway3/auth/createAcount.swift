@@ -19,21 +19,43 @@ struct createAcount: View {
     @State var confirmPassowrd:  String = ""
     
     var body: some View {
-        Text("Create Acount")
-            .font(.title)
-            .bold()
+        //Text("Create Acount")
+            //.font(.title)
+            //.bold()
         TextField("First Name", text: $firstName )
             .textFieldStyle(.roundedBorder)
             .padding()
         TextField("Last Name", text: $lastName)
             .textFieldStyle(.roundedBorder)
             .padding()
-        TextField("Username ", text: $username)
+        TextField("Username", text: $username)
             .textFieldStyle(.roundedBorder)
             .padding()
-        TextField("Email", text: $lastName)
+        TextField("Phone Number", text: $phoneNumber)
             .textFieldStyle(.roundedBorder)
             .padding()
+        TextField("Email", text: $email)
+            .textFieldStyle(.roundedBorder)
+            .padding()
+        TextField("Password", text: $password)
+            .textFieldStyle(.roundedBorder)
+            .padding()
+        TextField("Confirm Password", text: $confirmPassowrd)
+            .textFieldStyle(.roundedBorder)
+            .padding()
+        Button{
+            // logic to create an acount
+        }label: {
+            ZStack{
+                RoundedRectangle(cornerRadius: 20)
+                    .frame(height: 40)
+                    .padding()
+                Text("Create Acount")
+                    .foregroundStyle(.white)
+                    .bold()
+            }
+        }
+        
         
         
         
