@@ -12,9 +12,8 @@ import SwiftUI
 struct createAcount: View {
     @State var username: String = ""
     @State var email: String = ""
-    @State  var firstName: String = ""
+    @State var firstName: String = ""
     @State var lastName: String = ""
-    @State var phoneNumber: String = ""
     @State var password: String = ""
     @State var confirmPassowrd:  String = ""
     
@@ -22,39 +21,48 @@ struct createAcount: View {
         //Text("Create Acount")
             //.font(.title)
             //.bold()
-        TextField("First Name", text: $firstName )
-            .textFieldStyle(.roundedBorder)
+        TextField("First Name", text: $firstName)
             .padding()
+            .frame(width: 300, height:50)
+            .background(Color.black.opacity(0.05))
+            .cornerRadius(5)
+        
         TextField("Last Name", text: $lastName)
-            .textFieldStyle(.roundedBorder)
             .padding()
+            .frame(width: 300, height:50)
+            .background(Color.black.opacity(0.05))
+            .cornerRadius(5)
+        
         TextField("Username", text: $username)
-            .textFieldStyle(.roundedBorder)
             .padding()
-        TextField("Phone Number", text: $phoneNumber)
-            .textFieldStyle(.roundedBorder)
-            .padding()
+            .frame(width: 300, height:50)
+            .background(Color.black.opacity(0.05))
+            .cornerRadius(5)
+
         TextField("Email", text: $email)
-            .textFieldStyle(.roundedBorder)
             .padding()
-        TextField("Password", text: $password)
-            .textFieldStyle(.roundedBorder)
+            .frame(width: 300, height:50)
+            .background(Color.black.opacity(0.05))
+            .cornerRadius(5)
+        
+        SecureField("Password", text: $password)
             .padding()
-        TextField("Confirm Password", text: $confirmPassowrd)
-            .textFieldStyle(.roundedBorder)
+            .frame(width: 300, height:50)
+            .background(Color.black.opacity(0.05))
+            .cornerRadius(5)
+        
+        SecureField("Confirm Password", text: $confirmPassowrd)
             .padding()
-        Button{
-            // logic to create an acount
-        }label: {
-            ZStack{
-                RoundedRectangle(cornerRadius: 20)
-                    .frame(height: 40)
-                    .padding()
-                Text("Create Acount")
-                    .foregroundStyle(.white)
-                    .bold()
-            }
-        }
+            .frame(width: 300, height:50)
+            .background(Color.black.opacity(0.05))
+            .cornerRadius(5)
+        
+        Button("Login") {}
+        .foregroundColor(.white)
+        .bold()
+        .frame(width: 300, height: 45)
+        .background(Color.blue)
+        .cornerRadius(10)
         
         
         
