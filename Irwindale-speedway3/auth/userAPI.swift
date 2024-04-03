@@ -7,24 +7,36 @@
 
 import UIKit
 
-let url = URL(string: "https://track-andrew-b967c8424989.herokuapp.com/docs#/")!
-var request = URLRequest(url: url)
+let urlUser = URL(string: "https://track-andrew-b967c8424989.herokuapp.com/user")!
+var requestcreateUser = URLRequest(url: urlUser)
 
 struct userAPI: Codable {
+    
     func createUser() {
+        let coder = JSONEncoder()
         // send a post request to the API to create a user
         
-        request.httpMethod = "POST"
+        requestcreateUser.httpMethod = "POST"
         let user = userCreate(
             email: "user@example.com",
+            username: "siddu",
             password: "myPassword",
             name_first: "Sidd",
             name_last: "Sarvepally"
         )
-        
-        let data = try! JSONEncoder().encode(user)
-        
-        
-
+        do{
+            let data = try coder.encode(user)
+            requestcreateUser.httpBody = data
+        }
+        catch{
+            print(error)
+        }
+        let task =  URLSession.shared.dataTask(with: requestcreateUser){data, responce, error in
+            if let error = error {
+                print("Error with fetching user: \(error)")
+                return
+            }
+            
+        }
     }
 }
