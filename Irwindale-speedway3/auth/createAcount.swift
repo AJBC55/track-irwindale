@@ -10,6 +10,7 @@ import SwiftUI
 // This is a view to create an acounnt 
 
 struct createAcount: View {
+    let apiFuncs = apiFunctions()
     @State var username: String = ""
     @State var email: String = ""
     @State var firstName: String = ""
@@ -57,12 +58,25 @@ struct createAcount: View {
             .background(Color.black.opacity(0.05))
             .cornerRadius(5)
         
-        Button("Login") {}
-        .foregroundColor(.white)
-        .bold()
-        .frame(width: 300, height: 45)
-        .background(Color.blue)
-        .cornerRadius(10)
+        Button{
+            // logic for creating a user
+            Task{
+                await apiFuncs.createUser(userData: userCreate(email: email, username: username, password: password, name_first: firstName, name_last: lastName))
+            }
+        }label: {
+            ZStack{
+                RoundedRectangle(cornerRadius: 20)
+                    .frame(height: 50)
+                Text("Create Acount")
+                    .foregroundStyle(.white)
+                    .bold()
+            }
+            
+            
+        }
+        .padding(20)
+        .padding(.horizontal, 22)
+        
         
         
         

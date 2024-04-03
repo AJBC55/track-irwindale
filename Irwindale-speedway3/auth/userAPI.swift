@@ -7,36 +7,37 @@
 
 import UIKit
 
-let urlUser = URL(string: "https://track-andrew-b967c8424989.herokuapp.com/user")!
-var requestcreateUser = URLRequest(url: urlUser)
 
-struct userAPI: Codable {
-    
-    func createUser() {
+
+struct apiFunctions {
+    // Function to create a user
+    func createUser(userData: userCreate) async {
+        guard let urlUser = URL(string: "http://127.0.0.1:8000/user") else { return }
+        var requestcreateUser = URLRequest(url: urlUser)
         let coder = JSONEncoder()
-        // send a post request to the API to create a user
         
         requestcreateUser.httpMethod = "POST"
-        let user = userCreate(
-            email: "user@example.com",
-            username: "siddu",
-            password: "myPassword",
-            name_first: "Sidd",
-            name_last: "Sarvepally"
-        )
-        do{
-            let data = try coder.encode(user)
+        requestcreateUser.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let data = try coder.encode(userData)
             requestcreateUser.httpBody = data
-        }
-        catch{
-            print(error)
-        }
-        let task =  URLSession.shared.dataTask(with: requestcreateUser){data, responce, error in
-            if let error = error {
-                print("Error with fetching user: \(error)")
+            
+            let (datarecived, response) = try await URLSession.shared.data(for: requestcreateUser)
+            print(datarecived)
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                print("Error with the response, unexpected status code: \(String(describing: response))")
                 return
             }
             
+            // Here, you can handle the data returned from the server if needed
+            // For example, decoding JSON into a Swift struct
+            
+        } catch {
+            print("Error: \(error)")
         }
+       
     }
 }
+
