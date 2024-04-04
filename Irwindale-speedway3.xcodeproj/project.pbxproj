@@ -30,7 +30,7 @@
 		72008B902BBBCE4F001A6AAD /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B8F2BBBCE4F001A6AAD /* login.swift */; };
 		72008B942BBBD472001A6AAD /* userCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B932BBBD472001A6AAD /* userCreate.swift */; };
 		72008B962BBBD5A2001A6AAD /* userLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B952BBBD5A2001A6AAD /* userLogin.swift */; };
-		72008B982BBBD682001A6AAD /* userAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B972BBBD682001A6AAD /* userAPI.swift */; };
+		72008B982BBBD682001A6AAD /* apiFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B972BBBD682001A6AAD /* apiFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +58,7 @@
 		72008B8F2BBBCE4F001A6AAD /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		72008B932BBBD472001A6AAD /* userCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userCreate.swift; sourceTree = "<group>"; };
 		72008B952BBBD5A2001A6AAD /* userLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userLogin.swift; sourceTree = "<group>"; };
-		72008B972BBBD682001A6AAD /* userAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userAPI.swift; sourceTree = "<group>"; };
+		72008B972BBBD682001A6AAD /* apiFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				65206A7D2BBE1F55005F2FA3 /* auth.swift */,
-				72008B972BBBD682001A6AAD /* userAPI.swift */,
+				72008B972BBBD682001A6AAD /* apiFunctions.swift */,
 				650DF6E52B69B31000C4130B /* DataService.swift */,
 			);
 			path = "sever requests ";
@@ -233,7 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72008B962BBBD5A2001A6AAD /* userLogin.swift in Sources */,
-				72008B982BBBD682001A6AAD /* userAPI.swift in Sources */,
+				72008B982BBBD682001A6AAD /* apiFunctions.swift in Sources */,
 				650DF6E82B6AB61F00C4130B /* MapView.swift in Sources */,
 				650DF6EE2B6B391200C4130B /* Event.swift in Sources */,
 				65206A7E2BBE1F55005F2FA3 /* auth.swift in Sources */,

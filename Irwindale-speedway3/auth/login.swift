@@ -23,12 +23,14 @@ struct login: View {
                         .frame(width: 300, height:50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(5)
+                        .textInputAutocapitalization(.never)
                     
                     SecureField("Password", text: $password)
                         .padding()
                         .frame(width: 300, height:50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(5)
+                        .textInputAutocapitalization(.never)
                     
                     Button("Login") {
                         Task{

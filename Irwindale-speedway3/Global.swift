@@ -6,7 +6,11 @@
 //
 
 import Foundation
-class Global: ObservableObject {
-    @Published var isAuthenticated: Bool = false
-    @Published var token: String = ""
+class Global {
+    
+    
+    static var isAuthenticated: Bool = false
+    static var token: String = ""
+    
+    
 }

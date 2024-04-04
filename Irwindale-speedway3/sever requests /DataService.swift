@@ -36,8 +36,10 @@ struct DataService{
         
     }
     func geteventapiData() async -> [Event]{
+        let token = Global.token
         if let url = URL(string: "http://127.0.0.1:8000/events"){
-            let request = URLRequest(url: url)
+            var request = URLRequest(url: url)
+            request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
             do{
                 let (data, _) = try await URLSession.shared.data(for: request)
                 let decoder  = JSONDecoder()

@@ -12,8 +12,6 @@ struct Token: Decodable {
     var  token_type: String
 }
 struct Auth{
-    var isAuthenticated: Bool = false
-    var token: String = ""
     
     func login(username: String, password: String) async -> Token{
         guard let url = URL(string: "http://127.0.0.1:8000/login") else { return Token(access_token: "", token_type: "")}
@@ -31,8 +29,9 @@ struct Auth{
             do{
                 let decoder = JSONDecoder()
                 let result =  try decoder.decode(Token.self, from: data)
-                Global().token = result.access_token
-                Global().isAuthenticated = true
+                Global.token = result.access_token
+                Global.isAuthenticated = true
+                print(Global.token)
                 
                 return result
                 

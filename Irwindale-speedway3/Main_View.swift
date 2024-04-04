@@ -26,6 +26,9 @@ struct Main_View: View {
                     Text("Map")
                 }
             }
+            login().tabItem {
+                Text("login")
+            }
             }
         
         .tabViewStyle(DefaultTabViewStyle())

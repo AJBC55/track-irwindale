@@ -9,21 +9,22 @@ import SwiftUI
 
 struct EventsView: View {
     var dataService = DataService()
+    var api = apiFunctions()
     @State var events = [Event]()
     var body: some View {
         ScrollView{
-       
-            ForEach(events) { event in
+      
+                ForEach(events) { event in
                     VStack(alignment: .leading){
                         Spacer()
                         if let ImageUrl = event.img_link{
                             // display image
                             AsyncImage(url: URL(string: ImageUrl)!){ image in
-                            image
+                                image
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .cornerRadius(15)
-                                    
+                                
                                 
                             } placeholder:{
                                 Rectangle()
@@ -33,52 +34,75 @@ struct EventsView: View {
                                 
                             }
                         }
-                        Text(Helper.eventnameformat(eventName: event.name ?? ""))
-                            .font(.title2)
-                            .bold()
+                        HStack{
+                            Text(Helper.eventnameformat(eventName: event.name ?? ""))
+                                .font(.title2)
+                                .bold()
+                            Spacer()
+                            
+                            Button{
+                                Task{
+                                    await api.saveEvent(id: event.id)
+                                }
+                                
+                            }label: {
+                                if event.is_saved == true{
+                                    Image(systemName: "bookmark.fill")
+                                }
+                                else{
+                                    Image(systemName: "bookmark")
+                                }
+                                
+                            }
+                            .dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
+                            .padding()
+                        }
                         
                         Text(event.event_start ??  "")
                             .font(.headline)
                         Text(event.description ?? "")
                             .font(.subheadline)
                         HStack{
-                        if event.ticket_link ?? "" != ""{
-                            HStack{
-                                Spacer()
-                            
-                            Button{
-                                if let url = URL(string: event.ticket_link!){
-                                    UIApplication.shared.open(url)
+                            if event.ticket_link ?? "" != ""{
+                                HStack{
+                                    Spacer()
+                                    
+                                    Button{
+                                        if let url = URL(string: event.ticket_link!){
+                                            UIApplication.shared.open(url)
+                                        }
+                                    }label: {
+                                        Text("Get Tickets")
+                                            .foregroundStyle(.white)
+                                            .bold()
+                                            .padding(.horizontal,120)
+                                            .padding(.vertical,6)
+                                            .background(Color(.blue))
+                                    }       .cornerRadius(15)
+                                    Spacer()
                                 }
-                            }label: {
-                                Text("Get Tickets")
-                                    .foregroundStyle(.white)
-                                    .bold()
-                                    .padding(.horizontal,120)
-                                    .padding(.vertical,6)
-                                    .background(Color(.blue))
-                            }       .cornerRadius(15)
-                                Spacer()
+                                
                             }
-                           
-                            }
-                             
-                           
-                        
+                            
+                            
+                            
                         }
                         Divider()
                     }
                     .padding(.horizontal)
                     
-                
-            }
+                    
+                }
                 .padding(.vertical)
-        }
-        .task{
-           await events = dataService.geteventapiData()
+                
+                
+                .task{
+                    await events = dataService.geteventapiData()
+                }
+            
+          
         }
     }
-        
 }
 
 #Preview {

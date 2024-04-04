@@ -33,24 +33,29 @@ struct createAcount: View {
             .frame(width: 300, height:50)
             .background(Color.black.opacity(0.05))
             .cornerRadius(5)
+          
         
         TextField("Username", text: $username)
             .padding()
             .frame(width: 300, height:50)
             .background(Color.black.opacity(0.05))
             .cornerRadius(5)
+            .textInputAutocapitalization(.never)
 
         TextField("Email", text: $email)
             .padding()
             .frame(width: 300, height:50)
             .background(Color.black.opacity(0.05))
             .cornerRadius(5)
+            .textInputAutocapitalization(.never)
+            .textContentType(.emailAddress)
         
         SecureField("Password", text: $password)
             .padding()
             .frame(width: 300, height:50)
             .background(Color.black.opacity(0.05))
             .cornerRadius(5)
+            .textInputAutocapitalization(.never)
         
         SecureField("Confirm Password", text: $confirmPassowrd)
             .padding()
