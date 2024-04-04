@@ -10,11 +10,11 @@ import Foundation
     // this needs to be modified to work with the api
 
 struct Event: Identifiable, Decodable{
-    let id: UUID = UUID()
-    var eventName : String?
-    var eventDate : String?
-    var eventTime : [String]?
-    var eventImg : String?
-    var eventDescription : String?
-    var eventticketLink : String?
+    var id: Int
+    var name: String?
+    var description: String?
+    var event_start: String?
+    var ticket_link: String?
+    var img_link: String?
+    var is_saved: Bool?
 }

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct EventsView: View {
     var dataService = DataService()
-   @State var events = [Event]()
+    @State var events = [Event]()
     var body: some View {
         ScrollView{
        
-                ForEach(events) { event in
+            ForEach(events) { event in
                     VStack(alignment: .leading){
                         Spacer()
-                        if let ImageUrl = event.eventImg{
+                        if let ImageUrl = event.img_link{
                             // display image
                             AsyncImage(url: URL(string: ImageUrl)!){ image in
                             image
@@ -33,22 +33,21 @@ struct EventsView: View {
                                 
                             }
                         }
-                        Text(Helper.eventnameformat(eventName: event.eventName ?? ""))
+                        Text(Helper.eventnameformat(eventName: event.name ?? ""))
                             .font(.title2)
                             .bold()
-                        Text(event.eventDate ?? "")
+                        
+                        Text(event.event_start ??  "")
                             .font(.headline)
-                        Text(event.eventTime?[0] ?? "")
-                            .font(.headline)
-                        Text(event.eventDescription ?? "")
+                        Text(event.description ?? "")
                             .font(.subheadline)
                         HStack{
-                        if event.eventticketLink ?? "" != ""{
+                        if event.ticket_link ?? "" != ""{
                             HStack{
                                 Spacer()
                             
                             Button{
-                                if let url = URL(string: event.eventticketLink!){
+                                if let url = URL(string: event.ticket_link!){
                                     UIApplication.shared.open(url)
                                 }
                             }label: {
@@ -76,7 +75,7 @@ struct EventsView: View {
                 .padding(.vertical)
         }
         .task{
-            events = dataService.geteventData()
+           await events = dataService.geteventapiData()
         }
     }
         

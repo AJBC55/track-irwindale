@@ -36,13 +36,14 @@ struct DataService{
         
     }
     func geteventapiData() async -> [Event]{
-        if let url = URL(string: "http://127.0.0.1:8080/events"){
+        if let url = URL(string: "http://127.0.0.1:8000/events"){
             let request = URLRequest(url: url)
             do{
                 let (data, _) = try await URLSession.shared.data(for: request)
                 let decoder  = JSONDecoder()
                 
                 let result = try decoder.decode( [Event].self, from: data )
+               
                 return result
                 
             }
