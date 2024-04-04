@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct EventsView: View {
-    var dataService = DataService()
-    var api = apiFunctions()
+    var eventsRequests = Events()
     @State var events = [Event]()
     var body: some View {
         ScrollView{
@@ -42,7 +41,11 @@ struct EventsView: View {
                             
                             Button{
                                 Task{
-                                    await api.saveEvent(id: event.id)
+                                    do{
+                                        try  await eventsRequests.eventSave(id: event.id)
+                                    } catch{
+                                        print(error)
+                                    }
                                 }
                                 
                             }label: {
@@ -97,7 +100,11 @@ struct EventsView: View {
                 
                 
                 .task{
-                    await events = dataService.geteventapiData()
+                    do{
+                         try await events = eventsRequests.getevetnData()
+                    }catch{
+                        print(error)
+                    }
                 }
             
           
