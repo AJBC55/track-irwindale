@@ -31,7 +31,9 @@ struct Auth{
             do{
                 let decoder = JSONDecoder()
                 let result =  try decoder.decode(Token.self, from: data)
-                print(result)
+                Global().token = result.access_token
+                Global().isAuthenticated = true
+                
                 return result
                 
             } catch{
