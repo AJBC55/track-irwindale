@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct login: View {
-    
+    var auth = Auth()
     @State private var username = ""
     @State private var password = ""
     @State private var validLogin = false
@@ -15,7 +15,7 @@ struct login: View {
     @State private var wrongPassword = 0
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 VStack {
                     TextField("Username", text: $username)
@@ -30,14 +30,22 @@ struct login: View {
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(5)
                     
-                    Button("Login") {}
+                    Button("Login") {
+                        Task{
+                           await auth.login(username: username, password: password)
+                        }
+                    }
                     .foregroundColor(.white)
                     .bold()
                     .frame(width: 300, height: 45)
                     .background(Color.blue)
                     .cornerRadius(10)
                     
-                    Button{}
+                    
+                        NavigationLink{
+                            createAcount()
+                        
+                    }
                     label: {
                         Text("Create Account")
                             .underline()

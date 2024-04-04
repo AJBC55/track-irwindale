@@ -24,7 +24,6 @@ struct apiFunctions {
             requestcreateUser.httpBody = data
             
             let (datarecived, response) = try await URLSession.shared.data(for: requestcreateUser)
-            print(datarecived)
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
                 print("Error with the response, unexpected status code: \(String(describing: response))")
