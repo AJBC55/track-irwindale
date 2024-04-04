@@ -7,13 +7,18 @@
 
 import Foundation
 
-
+// this file handes authenticantion requests
 
 struct Token: Decodable {
     var access_token: String
     var  token_type: String
 }
 struct Auth{
+    // this is a funcion to login a user
+    // the it takese two peramiters user name and password
+    // it will throw an error if it did not sucseed
+    
+    
     func login(username: String, password: String) async throws {
         guard let url = URL(string: "http://127.0.0.1:8000/login") else {
             throw ServerError.urlCreationError
@@ -51,6 +56,8 @@ struct Auth{
             throw ServerError.networkError(error)
         }
     }
+    
+
         
        
     
