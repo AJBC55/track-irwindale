@@ -8,6 +8,9 @@ import SwiftUI
 
 struct login: View {
     var auth = Auth()
+    
+    @State var validCredintials: Bool = true
+
     @State private var username = ""
     @State private var password = ""
     @State private var validLogin = false
@@ -34,7 +37,13 @@ struct login: View {
                     
                     Button("Login") {
                         Task{
-                           await auth.login(username: username, password: password)
+                            do{
+                               try await auth.login(username: username, password: password)
+                            } catch ServerError.invalidCredentials{
+                                validCredintials = false
+                            } catch{
+                                // some logic here
+                            }
                         }
                     }
                     .foregroundColor(.white)

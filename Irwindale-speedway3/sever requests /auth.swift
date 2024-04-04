@@ -7,47 +7,52 @@
 
 import Foundation
 
+
+
 struct Token: Decodable {
     var access_token: String
     var  token_type: String
 }
 struct Auth{
-    
-    func login(username: String, password: String) async -> Token{
-        guard let url = URL(string: "http://127.0.0.1:8000/login") else { return Token(access_token: "", token_type: "")}
+    func login(username: String, password: String) async throws {
+        guard let url = URL(string: "http://127.0.0.1:8000/login") else {
+            throw ServerError.urlCreationError
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-
-            let parameters = "username=\(username)&password=\(password)"
-            request.httpBody = parameters.data(using: .utf8)
-        do{
-            let(data, response) = try await URLSession.shared.data(for: request)
-            print(response)
-            print(data)
-            
-            do{
-                let decoder = JSONDecoder()
-                let result =  try decoder.decode(Token.self, from: data)
-                Global.token = result.access_token
-                Global.isAuthenticated = true
-                print(Global.token)
-                
-                return result
-                
-            } catch{
-                print("json decoding error")
+        let parameters = "username=\(username)&password=\(password)"
+        request.httpBody = parameters.data(using: .utf8)
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse else {
+                throw ServerError.unexpectedStatusCode(-1) // Use when response is not HTTPURLResponse
             }
             
+            if httpResponse.statusCode == 401 {
+                throw ServerError.invalidCredentials
+            } else if !(200...299).contains(httpResponse.statusCode) {
+                throw ServerError.unexpectedStatusCode(httpResponse.statusCode)
+            }
             
-        } catch{
-            print("http error")
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode(Token.self, from: data)
+                // Assuming Global is a correctly implemented singleton
+                Global.token = result.access_token
+                Global.isAuthenticated = true
+                
+            } catch {
+                throw JsonError.decodingError(error)
+            }
+        } catch {
+            throw ServerError.networkError(error)
         }
+    }
         
        
-        
-        return Token(access_token: "", token_type: "")
-    }
     
 }
 
