@@ -20,7 +20,7 @@ struct Auth{
     
     
     func login(username: String, password: String) async throws {
-        guard let url = URL(string: "http://127.0.0.1:8000/login") else {
+        guard let url = URL(string: "https://track-andrew-b967c8424989.herokuapp.com/login") else {
             throw ServerError.urlCreationError
         }
         

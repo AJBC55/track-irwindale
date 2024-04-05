@@ -14,7 +14,7 @@ struct Events{
         // get the jwt token if the user is logged in
         let token = Global.token
         // creates a url thows if it cannot
-        guard let url = URL(string: "http://127.0.0.1:8000/events") else{ throw ServerError.urlCreationError}
+        guard let url = URL(string: "https://track-andrew-b967c8424989.herokuapp.com/events") else{ throw ServerError.urlCreationError}
         // create url request
         var request = URLRequest(url: url)
         // add bearer token headers
@@ -50,7 +50,7 @@ struct Events{
         // get jwt token
         let token = Global.token
         // create the url
-        guard let url = URL(string: "http://127.0.0.1:8000/events/save/\(id)") else{ throw ServerError.urlCreationError}
+        guard let url = URL(string: "https://track-andrew-b967c8424989.herokuapp.com/events/save/\(id)") else{ throw ServerError.urlCreationError}
         // create request
         var request = URLRequest(url: url)
         // set token header

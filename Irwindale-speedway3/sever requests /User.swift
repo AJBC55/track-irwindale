@@ -15,7 +15,7 @@ struct User{
     // this funcion creates a user if it runs without errors the user is created
     func create(userData: userCreate) async throws{
         // if can create the url else throw error
-        guard let url = URL(string: "http://127.0.0.1:8000/user") else{ throw ServerError.urlCreationError}
+        guard let url = URL(string: "https://track-andrew-b967c8424989.herokuapp.com/user") else{ throw ServerError.urlCreationError}
         var request = URLRequest(url: url)
         // specifing that the reqest is a post request
         request.httpMethod = "POST"
