@@ -19,30 +19,34 @@ struct createAcount: View {
     @State var password: String = ""
     @State var confirmPassword: String = ""
     
+    var passwordsMatch: Bool {
+            password == confirmPassword
+        }
+    
     var body: some View {
             TextField("First Name", text: $firstName)
                 .padding()
                 .frame(width: 300, height:50)
-                .background(Color.black.opacity(0.05))
+                .background(Color.black.opacity(0.08))
                 .cornerRadius(5)
             
             TextField("Last Name", text: $lastName)
                 .padding()
                 .frame(width: 300, height:50)
-                .background(Color.black.opacity(0.05))
+                .background(Color.black.opacity(0.08))
                 .cornerRadius(5)
 
             TextField("Username", text: $username)
                 .padding()
                 .frame(width: 300, height:50)
-                .background(Color.black.opacity(0.05))
+                .background(Color.black.opacity(0.08))
                 .cornerRadius(5)
                 .textInputAutocapitalization(.never)
 
             TextField("Email", text: $email)
                 .padding()
                 .frame(width: 300, height:50)
-                .background(Color.black.opacity(0.05))
+                .background(Color.black.opacity(0.08))
                 .cornerRadius(5)
                 .textInputAutocapitalization(.never)
                 .textContentType(.emailAddress)
@@ -50,40 +54,41 @@ struct createAcount: View {
             SecureField("Password", text: $password)
                 .padding()
                 .frame(width: 300, height:50)
-                .background(Color.black.opacity(0.05))
+                .background(Color.black.opacity(0.08))
                 .cornerRadius(5)
                 .textInputAutocapitalization(.never)
+        
             
             SecureField("Confirm Password", text: $confirmPassword)
                 .padding()
                 .frame(width: 300, height:50)
-                .background(Color.black.opacity(0.05))
+                .background(Color.black.opacity(0.08))
                 .cornerRadius(5)
                 .textInputAutocapitalization(.never)
+                .overlay(RoundedRectangle(cornerRadius: 5)
+                                .stroke(passwordsMatch ? Color.clear : Color.red, lineWidth: 2))
             
+        
             Button(action: {
                             Task {
-                                if isInputValid(email: email, username: username, password: password, confirmPassword: confirmPassword, name_first: firstName, name_last: lastName) {
                                     do {
                                         try await userRequests.create(userData: userCreate(email: email, username: username, password: password, name_first: firstName, name_last: lastName))
                                     } catch {
                                         errorMessage = error.localizedDescription
                                     }
-                                } else {
-                                    errorMessage = "Invalid input"
-                                }
+                                
                             }
                         }) {
                             ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .frame(height: 50)
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(width: 300, height: 50)
                                 Text("Create Account")
                                     .foregroundColor(.white)
                                     .bold()
                             }
                         }
-                        .padding(20)
-                        .padding(.horizontal, 22)
+                        .padding(10)
+
                         
                         if !errorMessage.isEmpty {
                             Text(errorMessage)
@@ -94,7 +99,7 @@ struct createAcount: View {
         
     }
 }
-
+    
 #Preview {
     createAcount()
 }

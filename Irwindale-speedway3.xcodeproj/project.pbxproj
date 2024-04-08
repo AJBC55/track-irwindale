@@ -32,6 +32,7 @@
 		72008B902BBBCE4F001A6AAD /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B8F2BBBCE4F001A6AAD /* login.swift */; };
 		72008B942BBBD472001A6AAD /* userCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B932BBBD472001A6AAD /* userCreate.swift */; };
 		72008B962BBBD5A2001A6AAD /* userLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B952BBBD5A2001A6AAD /* userLogin.swift */; };
+		726FB27B2BC3C5C700A62AE9 /* CustomMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FB27A2BC3C5C700A62AE9 /* CustomMapView.swift */; };
 		7287582C2BC3814A00A09893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7287582B2BC3814A00A09893 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		72008B8F2BBBCE4F001A6AAD /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		72008B932BBBD472001A6AAD /* userCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userCreate.swift; sourceTree = "<group>"; };
 		72008B952BBBD5A2001A6AAD /* userLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userLogin.swift; sourceTree = "<group>"; };
+		726FB27A2BC3C5C700A62AE9 /* CustomMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapView.swift; sourceTree = "<group>"; };
 		7287582B2BC3814A00A09893 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				65D3DC742B7C2DD0004CE75D /* JsonStructs */,
 				650DF6E32B69B2FA00C4130B /* irwindalelocations.json */,
 				65D3DC752B813DC3004CE75D /* events.json */,
+				726FB27A2BC3C5C700A62AE9 /* CustomMapView.swift */,
 				650DF6D12B69A44900C4130B /* Assets.xcassets */,
 				650DF6D32B69A44900C4130B /* Preview Content */,
 			);
@@ -249,6 +252,7 @@
 				650DF6CE2B69A44800C4130B /* Irwindale_speedway3App.swift in Sources */,
 				650DF6F22B7477A400C4130B /* Helper.swift in Sources */,
 				65206A8E2BBF5C12005F2FA3 /* Events.swift in Sources */,
+				726FB27B2BC3C5C700A62AE9 /* CustomMapView.swift in Sources */,
 				650DF6DC2B69A4D600C4130B /* EventsView.swift in Sources */,
 				65206A902BBF6A2B005F2FA3 /* DataService.swift in Sources */,
 			);
