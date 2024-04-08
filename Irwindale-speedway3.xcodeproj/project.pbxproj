@@ -32,6 +32,8 @@
 		72008B902BBBCE4F001A6AAD /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B8F2BBBCE4F001A6AAD /* login.swift */; };
 		72008B942BBBD472001A6AAD /* userCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B932BBBD472001A6AAD /* userCreate.swift */; };
 		72008B962BBBD5A2001A6AAD /* userLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B952BBBD5A2001A6AAD /* userLogin.swift */; };
+		726FB27B2BC3C5C700A62AE9 /* CustomMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726FB27A2BC3C5C700A62AE9 /* CustomMapView.swift */; };
+		7287582C2BC3814A00A09893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7287582B2BC3814A00A09893 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		72008B8F2BBBCE4F001A6AAD /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		72008B932BBBD472001A6AAD /* userCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userCreate.swift; sourceTree = "<group>"; };
 		72008B952BBBD5A2001A6AAD /* userLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userLogin.swift; sourceTree = "<group>"; };
+		726FB27A2BC3C5C700A62AE9 /* CustomMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapView.swift; sourceTree = "<group>"; };
+		7287582B2BC3814A00A09893 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		650DF6CC2B69A44800C4130B /* Irwindale-speedway3 */ = {
 			isa = PBXGroup;
 			children = (
+				7200F21C2BC3873D007EA1CF /* Server Requests */,
 				65206A752BBA4923005F2FA3 /* todo.rtf */,
 				650DF6CD2B69A44800C4130B /* Irwindale_speedway3App.swift */,
 				650DF6CF2B69A44800C4130B /* Main_View.swift */,
@@ -100,10 +105,10 @@
 				650DF6F12B7477A400C4130B /* Helper.swift */,
 				65206A842BBE530D005F2FA3 /* Global.swift */,
 				65206A8A2BBF5270005F2FA3 /* views */,
-				65206A812BBE2F56005F2FA3 /* sever requests  */,
 				65D3DC742B7C2DD0004CE75D /* JsonStructs */,
 				650DF6E32B69B2FA00C4130B /* irwindalelocations.json */,
 				65D3DC752B813DC3004CE75D /* events.json */,
+				726FB27A2BC3C5C700A62AE9 /* CustomMapView.swift */,
 				650DF6D12B69A44900C4130B /* Assets.xcassets */,
 				650DF6D32B69A44900C4130B /* Preview Content */,
 			);
@@ -118,17 +123,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		65206A812BBE2F56005F2FA3 /* sever requests  */ = {
-			isa = PBXGroup;
-			children = (
-				65206A7D2BBE1F55005F2FA3 /* Auth.swift */,
-				65206A8B2BBF5537005F2FA3 /* User.swift */,
-				65206A8D2BBF5C12005F2FA3 /* Events.swift */,
-				65206A8F2BBF6A2B005F2FA3 /* DataService.swift */,
-			);
-			path = "sever requests ";
-			sourceTree = "<group>";
-		};
 		65206A8A2BBF5270005F2FA3 /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +132,7 @@
 				650DF6E72B6AB61F00C4130B /* MapView.swift */,
 				65206A912BBFB681005F2FA3 /* SavedEventsView.swift */,
 				65206A932BBFC3F7005F2FA3 /* infoView.swift */,
+				7287582B2BC3814A00A09893 /* LaunchScreen.storyboard */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -152,6 +147,17 @@
 				650DF6E12B69AB7300C4130B /* IrwindaleLocations.swift */,
 			);
 			path = JsonStructs;
+			sourceTree = "<group>";
+		};
+		7200F21C2BC3873D007EA1CF /* Server Requests */ = {
+			isa = PBXGroup;
+			children = (
+				65206A7D2BBE1F55005F2FA3 /* Auth.swift */,
+				65206A8B2BBF5537005F2FA3 /* User.swift */,
+				65206A8D2BBF5C12005F2FA3 /* Events.swift */,
+				65206A8F2BBF6A2B005F2FA3 /* DataService.swift */,
+			);
+			path = "Server Requests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +221,7 @@
 				65D3DC762B813DC3004CE75D /* events.json in Resources */,
 				650DF6D52B69A44900C4130B /* Preview Assets.xcassets in Resources */,
 				650DF6D22B69A44900C4130B /* Assets.xcassets in Resources */,
+				7287582C2BC3814A00A09893 /* LaunchScreen.storyboard in Resources */,
 				650DF6E42B69B2FA00C4130B /* irwindalelocations.json in Resources */,
 				65206A762BBA4923005F2FA3 /* todo.rtf in Resources */,
 			);
@@ -245,6 +252,7 @@
 				650DF6CE2B69A44800C4130B /* Irwindale_speedway3App.swift in Sources */,
 				650DF6F22B7477A400C4130B /* Helper.swift in Sources */,
 				65206A8E2BBF5C12005F2FA3 /* Events.swift in Sources */,
+				726FB27B2BC3C5C700A62AE9 /* CustomMapView.swift in Sources */,
 				650DF6DC2B69A4D600C4130B /* EventsView.swift in Sources */,
 				65206A902BBF6A2B005F2FA3 /* DataService.swift in Sources */,
 			);
@@ -388,6 +396,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
@@ -421,6 +430,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;

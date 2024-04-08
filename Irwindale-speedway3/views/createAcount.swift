@@ -8,6 +8,7 @@
 import SwiftUI
 
 // This is a view to create an acounnt 
+var errorMessage: String = ""
 
 struct createAcount: View {
     let userRequests = User()
@@ -16,84 +17,91 @@ struct createAcount: View {
     @State var firstName: String = ""
     @State var lastName: String = ""
     @State var password: String = ""
-    @State var confirmPassowrd:  String = ""
+    @State var confirmPassword: String = ""
+    
+    var passwordsMatch: Bool {
+            password == confirmPassword
+        }
     
     var body: some View {
-        //Text("Create Acount")
-            //.font(.title)
-            //.bold()
-        TextField("First Name", text: $firstName)
-            .padding()
-            .frame(width: 300, height:50)
-            .background(Color.black.opacity(0.05))
-            .cornerRadius(5)
-        
-        TextField("Last Name", text: $lastName)
-            .padding()
-            .frame(width: 300, height:50)
-            .background(Color.black.opacity(0.05))
-            .cornerRadius(5)
-          
-        
-        TextField("Username", text: $username)
-            .padding()
-            .frame(width: 300, height:50)
-            .background(Color.black.opacity(0.05))
-            .cornerRadius(5)
-            .textInputAutocapitalization(.never)
+            TextField("First Name", text: $firstName)
+                .padding()
+                .frame(width: 300, height:50)
+                .background(Color.black.opacity(0.08))
+                .cornerRadius(5)
+            
+            TextField("Last Name", text: $lastName)
+                .padding()
+                .frame(width: 300, height:50)
+                .background(Color.black.opacity(0.08))
+                .cornerRadius(5)
 
-        TextField("Email", text: $email)
-            .padding()
-            .frame(width: 300, height:50)
-            .background(Color.black.opacity(0.05))
-            .cornerRadius(5)
-            .textInputAutocapitalization(.never)
-            .textContentType(.emailAddress)
-        
-        SecureField("Password", text: $password)
-            .padding()
-            .frame(width: 300, height:50)
-            .background(Color.black.opacity(0.05))
-            .cornerRadius(5)
-            .textInputAutocapitalization(.never)
-        
-//        SecureField("Confirm Password", text: $confirmPassowrd)
-//            .padding()
-//            .frame(width: 300, height:50)
-//            .background(Color.black.opacity(0.05))
-//            .cornerRadius(5)
-//        
-        Button{
-            // logic for creating a user
-            Task{
-                do{
-                    try await userRequests.create(userData: userCreate(email: email, username: username, password: password, name_first: firstName, name_last: lastName))
-                }catch{
-                    print(error)
-                }
-            }
-        }label: {
-            ZStack{
-                RoundedRectangle(cornerRadius: 20)
-                    .frame(height: 50)
-                Text("Create Acount")
-                    .foregroundStyle(.white)
-                    .bold()
-            }
+            TextField("Username", text: $username)
+                .padding()
+                .frame(width: 300, height:50)
+                .background(Color.black.opacity(0.08))
+                .cornerRadius(5)
+                .textInputAutocapitalization(.never)
+
+            TextField("Email", text: $email)
+                .padding()
+                .frame(width: 300, height:50)
+                .background(Color.black.opacity(0.08))
+                .cornerRadius(5)
+                .textInputAutocapitalization(.never)
+                .textContentType(.emailAddress)
             
+            SecureField("Password", text: $password)
+                .padding()
+                .frame(width: 300, height:50)
+                .background(Color.black.opacity(0.08))
+                .cornerRadius(5)
+                .textInputAutocapitalization(.never)
+        
             
-        }
-        .padding(20)
-        .padding(.horizontal, 22)
+            SecureField("Confirm Password", text: $confirmPassword)
+                .padding()
+                .frame(width: 300, height:50)
+                .background(Color.black.opacity(0.08))
+                .cornerRadius(5)
+                .textInputAutocapitalization(.never)
+                .overlay(RoundedRectangle(cornerRadius: 5)
+                                .stroke(passwordsMatch ? Color.clear : Color.red, lineWidth: 2))
+            
         
-        
-        
-        
-        
+            Button(action: {
+                            Task {
+                                    do {
+                                        try await userRequests.create(userData: userCreate(email: email, username: username, password: password, name_first: firstName, name_last: lastName))
+                                    } catch {
+                                        errorMessage = error.localizedDescription
+                                    }
+                                
+                            }
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(width: 300, height: 50)
+                                Text("Create Account")
+                                    .foregroundColor(.white)
+                                    .bold()
+                            }
+                        }
+                        .padding(10)
+
+                        
+                        if !errorMessage.isEmpty {
+                            Text(errorMessage)
+                                .foregroundColor(.red)
+                                .padding()
+                        }
+            
         
     }
 }
-
+    
 #Preview {
     createAcount()
 }
+
+
