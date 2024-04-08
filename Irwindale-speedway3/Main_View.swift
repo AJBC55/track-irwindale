@@ -13,7 +13,7 @@ struct Main_View: View {
         TabView{
            
             
-            EventsView().tabItem {
+            infoView().tabItem {
                 VStack{
                     Image(systemName: "list.bullet")
                     Text("Events")
@@ -24,6 +24,12 @@ struct Main_View: View {
                 VStack{
                     Image(systemName: "map")
                     Text("Map")
+                }
+            }
+            login().tabItem {
+                VStack{
+                    Image(systemName: "person.fill")
+                    Text("login")
                 }
             }
             }

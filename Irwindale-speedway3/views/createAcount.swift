@@ -10,7 +10,7 @@ import SwiftUI
 // This is a view to create an acounnt 
 
 struct createAcount: View {
-    let apiFuncs = apiFunctions()
+    let userRequests = User()
     @State var username: String = ""
     @State var email: String = ""
     @State var firstName: String = ""
@@ -33,35 +33,44 @@ struct createAcount: View {
             .frame(width: 300, height:50)
             .background(Color.black.opacity(0.05))
             .cornerRadius(5)
+          
         
         TextField("Username", text: $username)
             .padding()
             .frame(width: 300, height:50)
             .background(Color.black.opacity(0.05))
             .cornerRadius(5)
+            .textInputAutocapitalization(.never)
 
         TextField("Email", text: $email)
             .padding()
             .frame(width: 300, height:50)
             .background(Color.black.opacity(0.05))
             .cornerRadius(5)
+            .textInputAutocapitalization(.never)
+            .textContentType(.emailAddress)
         
         SecureField("Password", text: $password)
             .padding()
             .frame(width: 300, height:50)
             .background(Color.black.opacity(0.05))
             .cornerRadius(5)
+            .textInputAutocapitalization(.never)
         
-        SecureField("Confirm Password", text: $confirmPassowrd)
-            .padding()
-            .frame(width: 300, height:50)
-            .background(Color.black.opacity(0.05))
-            .cornerRadius(5)
-        
+//        SecureField("Confirm Password", text: $confirmPassowrd)
+//            .padding()
+//            .frame(width: 300, height:50)
+//            .background(Color.black.opacity(0.05))
+//            .cornerRadius(5)
+//        
         Button{
             // logic for creating a user
             Task{
-                await apiFuncs.createUser(userData: userCreate(email: email, username: username, password: password, name_first: firstName, name_last: lastName))
+                do{
+                    try await userRequests.create(userData: userCreate(email: email, username: username, password: password, name_first: firstName, name_last: lastName))
+                }catch{
+                    print(error)
+                }
             }
         }label: {
             ZStack{

@@ -8,6 +8,9 @@ import SwiftUI
 
 struct login: View {
     var auth = Auth()
+    
+    @State var validCredintials: Bool = true
+
     @State private var username = ""
     @State private var password = ""
     @State private var validLogin = false
@@ -23,16 +26,24 @@ struct login: View {
                         .frame(width: 300, height:50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(5)
+                        .textInputAutocapitalization(.never)
                     
                     SecureField("Password", text: $password)
                         .padding()
                         .frame(width: 300, height:50)
                         .background(Color.black.opacity(0.05))
                         .cornerRadius(5)
+                        .textInputAutocapitalization(.never)
                     
                     Button("Login") {
                         Task{
-                           await auth.login(username: username, password: password)
+                            do{
+                               try await auth.login(username: username, password: password)
+                            } catch ServerError.invalidCredentials{
+                                validCredintials = false
+                            } catch{
+                                // some logic here
+                            }
                         }
                     }
                     .foregroundColor(.white)
