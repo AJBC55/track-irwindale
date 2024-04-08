@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Events{
     // this function gets evenets from the api it will throw an error if it cannot get events
     func getevetnData() async throws -> [Event]{

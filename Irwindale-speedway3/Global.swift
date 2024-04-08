@@ -7,8 +7,6 @@
 
 import Foundation
 class Global {
-    
-    
     static var isAuthenticated: Bool = false
     static var token: String = ""
     

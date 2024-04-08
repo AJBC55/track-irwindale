@@ -8,10 +8,7 @@
 import Foundation
 
 
-struct User{
-    
-    
-    
+struct User {
     // this funcion creates a user if it runs without errors the user is created
     func create(userData: userCreate) async throws{
         // if can create the url else throw error

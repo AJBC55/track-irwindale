@@ -21,7 +21,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="irappbg5" translatesAutoresizingMaskIntoConstraints="NO" id="ovw-kb-BXR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loadingScreen" translatesAutoresizingMaskIntoConstraints="NO" id="ovw-kb-BXR">
                                 <rect key="frame" x="-16" y="-17" width="424" height="887"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -41,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="irappbg5" width="1180" height="2556"/>
+        <image name="loadingScreen" width="1180" height="2556"/>
     </resources>
 </document>

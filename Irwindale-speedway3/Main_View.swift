@@ -11,8 +11,6 @@ struct Main_View: View {
     
     var body: some View {
         TabView{
-           
-            
             infoView().tabItem {
                 VStack{
                     Image(systemName: "list.bullet")
@@ -29,7 +27,7 @@ struct Main_View: View {
             login().tabItem {
                 VStack{
                     Image(systemName: "person.fill")
-                    Text("login")
+                    Text("Login")
                 }
             }
             }
