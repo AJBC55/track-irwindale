@@ -1,16 +1,15 @@
 //
-//  EventsView.swift
+//  SavedEventsView.swift
 //  Irwindale-speedway3
 //
-//  Created by Andrew Chapman on 1/30/24.
+//  Created by Andrew Chapman on 4/4/24.
 //
 
 import SwiftUI
 
-struct EventsView: View {
-    @State var logError: Bool = false
+struct SavedEventsView: View {
+    @State var events: [Event] = [Event]()
     var eventsRequests = Events()
-    @State var events = [Event]()
     var body: some View {
         ScrollView{
             
@@ -45,7 +44,7 @@ struct EventsView: View {
                                     do{
                                         try  await eventsRequests.eventSave(id: event.id)
                                     }catch ServerError.invalidCredentials{
-                                        logError = true
+                                        
                                         
                                     }catch{
                                         print(error)
@@ -108,8 +107,8 @@ struct EventsView: View {
                 
                 .task{
                     do{
-                         try await events = eventsRequests.getevetnData()
-                    }catch{
+                        events =  try  await eventsRequests.getSavedEvents()
+                    } catch{
                         print(error)
                     }
                 }
@@ -117,8 +116,10 @@ struct EventsView: View {
           
         }
     }
+
+    
 }
 
 #Preview {
-    EventsView()
+    SavedEventsView()
 }

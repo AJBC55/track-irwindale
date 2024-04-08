@@ -55,6 +55,7 @@ struct Events{
         var request = URLRequest(url: url)
         // set token header
         request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
         request.httpMethod = "POST"
         // make a url session
         do{
@@ -75,52 +76,53 @@ struct Events{
                 // check if any other back status code
                 throw ServerError.unexpectedStatusCode(httpResponse.statusCode)
             }
-        } catch{
-            // throw a network error if the urlsession fails
-             throw ServerError.networkError(error)
         }
-    }
+        }
     
     
-    func getsavedEvents() async throws -> [Event]{
-        // get jwt token
+    
+    func getSavedEvents() async throws -> [Event] {
+        // Get JWT token
         let token = Global.token
-        // create the url
-        guard let url = URL(string: "http://127.0.0.1:8000/events/save") else{ throw ServerError.urlCreationError}
-        // create request
+        
+        // Create the URL
+        guard let url = URL(string: "https://track-andrew-b967c8424989.herokuapp.com/events/save") else {
+            throw ServerError.urlCreationError
+        }
+        
+        // Create request
         var request = URLRequest(url: url)
-        // set token header
-        request.setValue( "Bearer \(token)", forHTTPHeaderField: "Authorization")
-        request.httpMethod = "GET"
-        // make a url session
-        do{
-            let (data, response) = try await URLSession.shared.data(for: request)
-            
-            guard let httpResponse = response as? HTTPURLResponse else{ throw ServerError.unexpectedStatusCode(-1)}
-            // check for 404 response
-            if httpResponse.statusCode == 401{
-                // check if 401
-                Global.isAuthenticated = false
-                Global.token = ""
-                throw ServerError.invalidCredentials
-                
-            }else if httpResponse.statusCode == 404{
-                // check if 404
-                throw ServerError.notFound
-            }else if !(200...299).contains(httpResponse.statusCode){
-                // check if any other back status code
-                throw ServerError.unexpectedStatusCode(httpResponse.statusCode)
-            }
-            // try do decode json
-            do{
-                let decoder = JSONDecoder()
-                let result = try decoder.decode([Event].self, from: data)
-                return result
-            } catch{
-                throw JsonError.decodingError(error)
-            }
-        } catch{
-            throw ServerError.networkError(error)
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // Make a URL session
+        let (data, response) = try await URLSession.shared.data(for: request)
+        print(response)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw ServerError.unexpectedStatusCode(-1)
+        }
+        
+        // Check the status code
+        if httpResponse.statusCode == 401 {
+            Global.isAuthenticated = false
+            Global.token = ""
+            throw ServerError.invalidCredentials
+        } else if httpResponse.statusCode == 404 {
+            throw ServerError.notFound
+        } else if !(200...299).contains(httpResponse.statusCode) {
+            throw ServerError.unexpectedStatusCode(httpResponse.statusCode)
+        }
+        
+        // Try to decode JSON
+        do {
+            let decoder = JSONDecoder()
+            let result = try decoder.decode([Event].self, from: data)
+            return result
+        } catch {
+            throw JsonError.decodingError(error)
         }
     }
-}
+
+    }
+
