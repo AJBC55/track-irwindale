@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct Irwindale_speedway3App: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
             Main_View()
