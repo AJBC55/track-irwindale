@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Main_View: View {
-    
     var body: some View {
         TabView{
             infoView().tabItem {

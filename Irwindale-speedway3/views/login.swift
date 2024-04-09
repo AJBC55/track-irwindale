@@ -39,6 +39,7 @@ struct login: View {
                         Task{
                             do{
                                try await auth.login(username: username, password: password)
+                                Main_View()
                             } catch ServerError.invalidCredentials{
                                 validCredintials = false
                             } catch{
