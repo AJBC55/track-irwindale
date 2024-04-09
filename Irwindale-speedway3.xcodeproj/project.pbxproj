@@ -27,6 +27,7 @@
 		65206A902BBF6A2B005F2FA3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65206A8F2BBF6A2B005F2FA3 /* DataService.swift */; };
 		65206A922BBFB681005F2FA3 /* SavedEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65206A912BBFB681005F2FA3 /* SavedEventsView.swift */; };
 		65206A942BBFC3F8005F2FA3 /* infoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65206A932BBFC3F7005F2FA3 /* infoView.swift */; };
+		65BDA7002BC49CF1001CAB76 /* onOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BDA6FF2BC49CF1001CAB76 /* onOpen.swift */; };
 		65D3DC712B7C2411004CE75D /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D3DC702B7C2411004CE75D /* News.swift */; };
 		65D3DC762B813DC3004CE75D /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 65D3DC752B813DC3004CE75D /* events.json */; };
 		72008B902BBBCE4F001A6AAD /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72008B8F2BBBCE4F001A6AAD /* login.swift */; };
@@ -58,6 +59,9 @@
 		65206A8F2BBF6A2B005F2FA3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		65206A912BBFB681005F2FA3 /* SavedEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedEventsView.swift; sourceTree = "<group>"; };
 		65206A932BBFC3F7005F2FA3 /* infoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoView.swift; sourceTree = "<group>"; };
+		65BDA6FD2BC4935E001CAB76 /* Irwindale-speedway3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Irwindale-speedway3.entitlements"; sourceTree = "<group>"; };
+		65BDA6FE2BC49BAD001CAB76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		65BDA6FF2BC49CF1001CAB76 /* onOpen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onOpen.swift; sourceTree = "<group>"; };
 		65D3DC702B7C2411004CE75D /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		65D3DC752B813DC3004CE75D /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = events.json; sourceTree = "<group>"; };
 		72008B8F2BBBCE4F001A6AAD /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
@@ -97,11 +101,14 @@
 		650DF6CC2B69A44800C4130B /* Irwindale-speedway3 */ = {
 			isa = PBXGroup;
 			children = (
+				65BDA6FE2BC49BAD001CAB76 /* Info.plist */,
+				65BDA6FD2BC4935E001CAB76 /* Irwindale-speedway3.entitlements */,
 				65206A752BBA4923005F2FA3 /* todo.rtf */,
 				650DF6CD2B69A44800C4130B /* Irwindale_speedway3App.swift */,
 				650DF6CF2B69A44800C4130B /* Main_View.swift */,
 				65206A882BBF4C26005F2FA3 /* Errors.swift */,
 				650DF6F12B7477A400C4130B /* Helper.swift */,
+				65BDA6FF2BC49CF1001CAB76 /* onOpen.swift */,
 				65206A842BBE530D005F2FA3 /* Global.swift */,
 				7200F21C2BC3873D007EA1CF /* Server Requests */,
 				65206A8A2BBF5270005F2FA3 /* views */,
@@ -245,6 +252,7 @@
 				72008B962BBBD5A2001A6AAD /* userLogin.swift in Sources */,
 				650DF6E82B6AB61F00C4130B /* MapView.swift in Sources */,
 				650DF6EE2B6B391200C4130B /* Event.swift in Sources */,
+				65BDA7002BC49CF1001CAB76 /* onOpen.swift in Sources */,
 				65206A922BBFB681005F2FA3 /* SavedEventsView.swift in Sources */,
 				65206A7E2BBE1F55005F2FA3 /* Auth.swift in Sources */,
 				65206A892BBF4C26005F2FA3 /* Errors.swift in Sources */,
@@ -393,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Irwindale-speedway3/Irwindale-speedway3.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -400,6 +409,7 @@
 				DEVELOPMENT_TEAM = D932745K44;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Irwindale-speedway3/Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ask user location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -427,6 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Irwindale-speedway3/Irwindale-speedway3.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -434,6 +445,7 @@
 				DEVELOPMENT_TEAM = D932745K44;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Irwindale-speedway3/Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ask user location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
